@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact, toogleFavContact } from '../../redux/contactsSlice';
 import { useState } from 'react';
 import css from './Contact.module.css';
 import { HiOutlineDotsHorizontal } from "react-icons/hi";
 import { IoIosClose } from "react-icons/io";
 import { FaPhone } from "react-icons/fa6";
+import { deleteContact, toggleToFavContact } from '../../redux/contactsOps.js';
 import clsx from 'clsx';
 
 
@@ -16,7 +16,9 @@ function Contact({ contact }) {
     dispatch(deleteContact(contact.id))
   };
   const handleFavorite = () => {
-    dispatch(toogleFavContact(contact.id))
+    const contactId = contact.id;
+    const favorite = !contact.favorite;
+    dispatch(toggleToFavContact({contactId, favorite}))
   };
 
   return (
@@ -33,7 +35,6 @@ function Contact({ contact }) {
           <button type='button' onClick={handleDelete}>Delete contact</button>
           <button type='button' onClick={handleFavorite}>{contact.favorite ? 'Remove favorite' : 'Add to favorite'}</button>
         </div>
-      
     </>
   )
 }

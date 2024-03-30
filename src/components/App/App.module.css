@@ -8,6 +8,14 @@
     margin: 0 auto;
 }
 
+.error{
+    color: red;
+}
+
+.loader{
+    color: var(--main-color);
+}
+
 @media screen and (max-width: 675px) {
     .wrapper{
         flex-direction: column-reverse;
